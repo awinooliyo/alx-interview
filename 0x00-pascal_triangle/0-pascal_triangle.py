@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """A script that determines the Pascal's triangle for any number"""
 
+
 def pascal_triangle(n):
     """
     Returns a list of lists of integers representing the Pascal's
@@ -20,5 +21,4 @@ def pascal_triangle(n):
             else:
                 temp_list.append(triangle[i-1][j-1] + triangle[i-1][j])
         triangle.append(temp_list)
-    
     return triangle
