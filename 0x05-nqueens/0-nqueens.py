@@ -1,7 +1,7 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 
 """
-N Queens Solver
+N Queens Solver (Python)
 
 This script solves the N Queens problem using a backtracking
 approach. It places N non-attacking queens on an N×N chessboard
