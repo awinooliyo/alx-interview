@@ -13,9 +13,9 @@ def rotate_2d_matrix(matrix):
     Returns:
         None
     """
-    # First, we reverse the order of the rows
+    # We begin by first reversing the order of the rows
     matrix.reverse()
-    # Next, we swap the elements in the diagonal only once
+    # Next, we swap the elements along the diagonal only once
     for i in range(len(matrix)):
         for j in range(i):
             matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
