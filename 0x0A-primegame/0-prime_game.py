@@ -10,7 +10,8 @@ def sieve_of_eratosthenes(n):
     and the value at that index is True if the number is prime,
     False otherwise.
     """
-    # Initialize a list with True values assuming every number is prime initially
+    # Initialize a list with True values
+    # assuming every number is prime initially
     sieve = [True] * (n + 1)
 
     # 0 and 1 are not prime numbers, so we mark them as False
@@ -23,8 +24,10 @@ def sieve_of_eratosthenes(n):
             for multiple in range(i * i, n + 1, i):
                 sieve[multiple] = False
 
-    # Return the list where prime numbers are True and non-prime numbers are False
+    # Return the list where prime numbers
+    # are True and non-prime numbers are False
     return sieve
+
 
 def count_primes_up_to(n, primes):
     """
@@ -34,6 +37,7 @@ def count_primes_up_to(n, primes):
     """
     # Count all numbers that are prime up to n
     return sum(1 for i in range(2, n + 1) if primes[i])
+
 
 def isWinner(x, nums):
     """
@@ -49,22 +53,27 @@ def isWinner(x, nums):
     "Ben" if Ben wins the most rounds,
     or None if they win the same number of rounds.
     """
-    # Edge case: If there are no rounds or nums list is empty, return None (no winner)
+    # Edge case: If there are no rounds or nums
+    # list is empty, return None (no winner)
     if not nums or x < 1:
         return None
 
-    # Find the maximum n from the nums list so we know how many primes to calculate
+    # Find the maximum n from the nums list
+    # so we know how many primes to calculate
     max_n = max(nums)
 
-    # Generate a list of primes up to the largest n using the Sieve of Eratosthenes
+    # Generate a list of primes up to the
+    # largest n using the Sieve of Eratosthenes
     primes = sieve_of_eratosthenes(max_n)
 
-    # Create an array to store how many prime numbers exist up to each number from 1 to max_n
+    # Create an array to store how many prime numbers
+    # exist up to each number from 1 to max_n
     prime_count = [0] * (max_n + 1)
 
     # Populate the prime_count array
     for i in range(1, max_n + 1):
-        # The number of primes up to i is the number of primes up to (i - 1) plus 1 if i is prime
+        # The number of primes up to i is the number
+        # of primes up to (i - 1) plus 1 if i is prime
         prime_count[i] = prime_count[i - 1] + (1 if primes[i] else 0)
 
     # Track the number of wins for Maria and Ben
@@ -73,7 +82,8 @@ def isWinner(x, nums):
 
     # Go through each round and determine the winner
     for n in nums:
-        # If the number of primes up to n is odd, Maria wins (since she goes first)
+        # If the number of primes up to n is odd,
+        # Maria wins (since she goes first)
         # If the number of primes up to n is even, Ben wins
         if prime_count[n] % 2 == 1:
             maria_wins += 1
