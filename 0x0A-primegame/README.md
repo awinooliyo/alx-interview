@@ -30,3 +30,34 @@ This implementation determines the winner of the game by simulating multiple rou
 ├── README.md          # This documentation file
 ├── 0-prime_game.py    # Implementation of the Prime Game
 └── main_0.py          # Main file to test the implementation
+
+Full Example:
+Let's walk through an example with n = 10 to see how this works:
+
+## Initialize:
+
+- We start with the sieve: [True, True, True, True, True, True, True, True, True, True, True].
+- Indices 0 and 1 will be marked as False later since they are not prime.
+- First pass (i = 2):
+
+- i = 2 is prime (sieve[2] is True), so we mark all multiples of 2 as False.
+- Starting from 2 * 2 = 4, we mark 4, 6, 8, and 10 as False.
+- The sieve now looks like: [False, False, True, True, False, True, False, True, False, True, False].
+- Second pass (i = 3):
+
+- i = 3 is prime (sieve[3] is True), so we mark all multiples of 3 as False.
+- Starting from 3 * 3 = 9, we mark 9 as False.
+- The sieve now looks like: [False, False, True, True, False, True, False, True, False, False, False].
+- Stop at 4 (i = 4):
+
+- i = 4 is already marked as False (because it's a multiple of 2), so we skip it.
+- Since i has reached the square root of 10 (which is about 3), we can stop checking.
+## Final Sieve:
+- After running this algorithm, the sieve tells us which numbers are prime:
+
+- True at index 2, 3, 5, and 7 means those are prime numbers.
+- False elsewhere means those numbers are not prime.
+## Summary:
+The outer loop iterates over numbers up to the square root of n.
+For each prime number i, the inner loop marks all multiples of i as non-prime starting from i * i.
+This efficiently marks all non-prime numbers, leaving only prime numbers marked as True
